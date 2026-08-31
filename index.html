@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InjectYou Task Planner</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Task Planner</h1>
+        <p>Track daily work with priorities and due dates.</p>
+      </header>
+
+      <section class="card">
+        <form id="task-form" novalidate>
+          <div class="row">
+            <label for="title">Task</label>
+            <input id="title" name="title" type="text" maxlength="80" placeholder="Write release notes" required />
+          </div>
+          <div class="row split">
+            <div>
+              <label for="priority">Priority</label>
+              <select id="priority" name="priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div>
+              <label for="dueDate">Due date</label>
+              <input id="dueDate" name="dueDate" type="date" />
+            </div>
+          </div>
+          <button type="submit">Add task</button>
+          <p id="form-error" class="error" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="toolbar">
+          <select id="status-filter" aria-label="Filter tasks by status">
+            <option value="all">All tasks</option>
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+          </select>
+          <button id="clear-completed" type="button">Clear completed</button>
+        </div>
+        <ul id="task-list" class="tasks"></ul>
+        <p id="empty-state" class="muted">No tasks yet. Add your first task.</p>
+      </section>
+
+      <section class="stats card" aria-live="polite">
+        <strong id="task-stats">0 total · 0 done · 0 left</strong>
+      </section>
+    </main>
+
+    <script type="module" src="/script.js"></script>
+  </body>
+</html>
